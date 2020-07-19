@@ -21,13 +21,13 @@ function loadWidget(config) {
 			<div id="waifu-tips"></div>
 			<canvas id="live2d" width="800" height="800"></canvas>
 			<div id="waifu-tool">
-				<span class="fa fa-lg fa-comment"></span>
-				<span class="fa fa-lg fa-paper-plane"></span>
-				<span class="fa fa-lg fa-user-circle"></span>
-				<span class="fa fa-lg fa-street-view"></span>
-				<span class="fa fa-lg fa-camera-retro"></span>
-				<span class="fa fa-lg fa-info-circle"></span>
-				<span class="fa fa-lg fa-times"></span>
+				<span class="iconfont iconduihua"></span>
+				<span class="iconfont iconyueliang"></span>
+				<span class="iconfont iconhuanzhuang"></span>
+				<span class="iconfont iconjiaose-kehuanzhuang"></span>
+				<span class="iconfont iconzhaopianpaizhao"></span>
+				<span class="iconfont iconwangzhan"></span>
+				<span class="iconfont iconguanbi"></span>
 			</div>
 		</div>`);
 	// https://stackoverflow.com/questions/24148403/trigger-css-transition-on-appended-element
@@ -58,28 +58,19 @@ function loadWidget(config) {
 	}, 1000);
 
 	(function registerEventListener() {
-		document.querySelector("#waifu-tool .fa-comment").addEventListener("click", showHitokoto);
-		document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click", () => {
-			if (window.Asteroids) {
-				if (!window.ASTEROIDSPLAYERS) window.ASTEROIDSPLAYERS = [];
-				window.ASTEROIDSPLAYERS.push(new Asteroids());
-			} else {
-				const script = document.createElement("script");
-				script.src = "https://cdn.jsdelivr.net/gh/stevenjoezhang/asteroids/asteroids.js";
-				document.head.appendChild(script);
-			}
-		});
-		document.querySelector("#waifu-tool .fa-user-circle").addEventListener("click", loadOtherModel);
-		document.querySelector("#waifu-tool .fa-street-view").addEventListener("click", loadRandModel);
-		document.querySelector("#waifu-tool .fa-camera-retro").addEventListener("click", () => {
+		document.querySelector("#waifu-tool .iconduihua").addEventListener("click", showHitokoto);
+		document.querySelector("#waifu-tool .iconyueliang").addEventListener("click", switchDarkMode());
+		document.querySelector("#waifu-tool .iconhuanzhuang").addEventListener("click", loadOtherModel);
+		document.querySelector("#waifu-tool .iconjiaose-kehuanzhuang").addEventListener("click", loadRandModel);
+		document.querySelector("#waifu-tool .iconzhaopianpaizhao").addEventListener("click", () => {
 			showMessage("照好了嘛，是不是很可爱呢？", 6000, 9);
 			Live2D.captureName = "photo.png";
 			Live2D.captureFrame = true;
 		});
-		document.querySelector("#waifu-tool .fa-info-circle").addEventListener("click", () => {
-			open("https://github.com/stevenjoezhang/live2d-widget");
+		document.querySelector("#waifu-tool .iconwangzhan").addEventListener("click", () => {
+			open("https://www.mintimate.cn/about");
 		});
-		document.querySelector("#waifu-tool .fa-times").addEventListener("click", () => {
+		document.querySelector("#waifu-tool .iconguanbi").addEventListener("click", () => {
 			localStorage.setItem("waifu-display", Date.now());
 			showMessage("愿你有一天能与重要的人重逢。", 2000, 11);
 			document.getElementById("waifu").style.bottom = "-500px";
@@ -162,8 +153,8 @@ function loadWidget(config) {
 			modelTexturesId = localStorage.getItem("modelTexturesId");
 		if (modelId === null) {
 			// 首次访问加载 指定模型 的 指定材质
-			modelId = 1; // 模型 ID
-			modelTexturesId = 53; // 材质 ID
+			modelId = 34 // 模型 ID
+			modelTexturesId = 1; // 材质 ID
 		}
 		loadModel(modelId, modelTexturesId);
 		fetch(waifuPath)
