@@ -59,7 +59,7 @@ function loadWidget(config) {
 
 	(function registerEventListener() {
 		document.querySelector("#waifu-tool .iconduihua").addEventListener("click", showHitokoto);
-		document.querySelector("#waifu-tool .iconyueliang").addEventListener("click", switchDarkMode());
+		document.querySelector("#waifu-tool .iconyueliang").addEventListener("click", switchDarkMode);
 		document.querySelector("#waifu-tool .iconhuanzhuang").addEventListener("click", loadOtherModel);
 		document.querySelector("#waifu-tool .iconjiaose-kehuanzhuang").addEventListener("click", loadRandModel);
 		document.querySelector("#waifu-tool .iconzhaopianpaizhao").addEventListener("click", () => {
