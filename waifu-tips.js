@@ -22,7 +22,7 @@ function loadWidget(config) {
 			<canvas id="live2d" width="800" height="800"></canvas>
 			<div id="waifu-tool">
 				<span class="iconfont iconduihua"></span>
-				<span class="iconfont iconyueliang"></span>
+				<span class="iconfont iconrenwu-caidan"></span>
 				<span class="iconfont iconhuanzhuang"></span>
 				<span class="iconfont iconjiaose-kehuanzhuang"></span>
 				<span class="iconfont iconzhaopianpaizhao"></span>
@@ -59,20 +59,15 @@ function loadWidget(config) {
 
 	(function registerEventListener() {
 		document.querySelector("#waifu-tool .iconduihua").addEventListener("click", showHitokoto);
-		document.querySelector("#waifu-tool .iconyueliang").addEventListener("click", () => {
- function switchDarkMode() {
-	if ($('body').hasClass('dark')) {
-		$("#dark").html('<i class="iconfont icontaiyang"></i>');
-		document.body.classList.remove('dark');
-		localStorage.setItem('noDark', '1');
-		localStorage.setItem('dark', '0');
-	} else {
-		$("#dark").html('<i class="iconfont iconyueliang"></i>'); 
-		document.body.classList.add('dark');
-		localStorage.setItem('dark', '1');
-		localStorage.setItem('noDark', '0');
-	}
-}
+		document.querySelector("#waifu-tool .iconrenwu-caidan").addEventListener("click", () => {
+if (window.Asteroids) {
+				if (!window.ASTEROIDSPLAYERS) window.ASTEROIDSPLAYERS = [];
+				window.ASTEROIDSPLAYERS.push(new Asteroids());
+			} else {
+				const script = document.createElement("script");
+				script.src = "https://www.mintimate.cn/asteroids.min.js";
+				document.head.appendChild(script);
+			}
 		});
 		document.querySelector("#waifu-tool .iconhuanzhuang").addEventListener("click", loadOtherModel);
 		document.querySelector("#waifu-tool .iconjiaose-kehuanzhuang").addEventListener("click", loadRandModel);
